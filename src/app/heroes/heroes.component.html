@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+<div class="addHero">
+<h2>My Heroes</h2>
+
+<p>Hero Name: <input [(ngModel)]="new_name" placeholder="new_name">
+  <button class="btn btn-primary" (click)="add(new_name);">add</button>
+</p>
+</div>
+<div class="mainContent">
+<ul class="heroes">
+  <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+    <div class="nameId">
+    <span class="badge">{{hero.id}}</span> 
+    <span>{{hero.name}}</span>
+    </div>
+    <button class="delete" (click)="delete(hero);">X</button>
+  </li>
+ 
+</ul>
+
+<div *ngIf="selectedHero" class="showHero">
+  <h2>{{ selectedHero.name}} Details</h2>
+  <div class="heroDetail">
+  <div class="heroId">
+    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Id:&nbsp;</label>
+    <input [(ngModel)]="selectedHero.id" placeholder="id" readonly>
+  </div>
+  <div class="heroName">
+    <label>Name:
+      <input [(ngModel)]="selectedHero.name" placeholder="name">
+    </label>
+  </div>
+</div>
+</div>
+
+
